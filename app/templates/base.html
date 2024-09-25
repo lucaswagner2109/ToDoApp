@@ -9,7 +9,8 @@
             <a href="{{ url_for('index') }}">Home</a>
             <a href="">Profile</a>
             <a href=" {{ url_for('signin') }}">Sign In</a>
-            <a href="">Sign Up</a>
+            <a href=" {{ url_for('signup') }}">Sign Up</a>
+            <a href=" {{ url_for('signout') }}">Sign Out</a>
         </div>
         <hr>
         {% with messages = get_flashed_messages() %}
