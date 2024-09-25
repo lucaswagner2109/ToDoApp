@@ -6,11 +6,16 @@
     </head>
     <body>
         <div>
+
+            {% if current_user.is_anonymous %}
             <a href="{{ url_for('index') }}">Home</a>
-            <a href="">Profile</a>
-            <a href=" {{ url_for('signin') }}">Sign In</a>
-            <a href=" {{ url_for('signup') }}">Sign Up</a>
-            <a href=" {{ url_for('signout') }}">Sign Out</a>
+            <a href="{{ url_for('signin') }}">Sign In</a>
+            <a href="{{ url_for('signup') }}">Sign Up</a>
+            {% else %}
+            <a href="{{ url_for('projects', username=current_user.username) }}">Projects</a>
+            <a href="{{ url_for('profile', username=current_user.username) }}">Profile</a>
+            <a href="{{ url_for('signout') }}">Sign Out</a>
+            {% endif %}
         </div>
         <hr>
         {% with messages = get_flashed_messages() %}
